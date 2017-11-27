@@ -20,7 +20,7 @@ Promise.all(requests)
             value.data.results.forEach((pokemon, pokeInd) => {
                 console.log(`${index}${pokeInd} - ${pokemon.name}`)
             })
-            console.log('---------------\n');
+            console.log('---------------');
         })
     })
     .catch((err) => {
@@ -35,6 +35,23 @@ Promise.any([
 ]).then((value) => {
     console.log('======= task01 - 3 =======');
     console.log(value.data.name);
+}).catch((error) => {
+    console.error(error);
+})
+
+// task01 - 4
+Promise.props({
+    pokemons: axios.get('http://pokeapi.co/api/v2/pokemon/?limit=10'),
+    items: axios.get('http://pokeapi.co/api/v2/item/?limit=10'),
+    locations: axios.get('http://pokeapi.co/api/v2/location/?limit=10')
+}).then((result) => {
+    console.log('======= task01 - 4 =======');
+    Object.values(result).forEach((prop) => {
+        prop.data.results.forEach((value) => {
+            console.log(value.name);
+        });
+        console.log('---------------');
+    })
 }).catch((error) => {
     console.error(error);
 })
