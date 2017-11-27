@@ -6,6 +6,8 @@ axios.get('https://pokeapi.co/api/v2/pokemon/42/')
     .then((response) => {
         console.log('======= task01 - 1 =======');
         console.log(`name: ${response.data.name},\nweight: ${response.data.weight},\nheight: ${response.data.height}`)
+    }).catch ((error) => {
+        console.error(error);
     })
 
 // task01 - 2 
