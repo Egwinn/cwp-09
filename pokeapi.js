@@ -55,3 +55,15 @@ Promise.props({
 }).catch((error) => {
     console.error(error);
 })
+
+// task01 - 5
+Promise.map([1, 2, 3, 4], (id) => {
+    return axios.get(`http://pokeapi.co/api/v2/berry/${id}`);
+}).then((result) => {
+    console.log('======= task01 - 5 =======');
+    result.forEach((value) => {
+        console.log(value.data.name);
+    })
+}).catch((error) => {
+    console.error(error);
+})
